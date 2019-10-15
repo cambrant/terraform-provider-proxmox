@@ -475,7 +475,7 @@ func resourceVmQemuCreate(d *schema.ResourceData, meta interface{}) error {
 
 	if vmID != 0 {
 		log.Print("[DEBUG] checking for duplicate ID")
-		if exists, err := client.CheckVmID(vmID); exists {
+		if exists, err := client.GetVmidExists(vmID); exists {
 			log.Printf("[DEBUG] %s", err)
 			pmParallelEnd(pconf)
 			return err
